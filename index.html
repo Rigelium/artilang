@@ -27,6 +27,12 @@
     <div id="dictionary-container">Loading words...</div>
 
     <script>
+        
+        let words = []; // initialising as global array
+        let currentPage = 1;
+        const WPP = 20;
+
+        // --------------------------------------------------
         const urlParams = new URLSearchParams(window.location.search);
         const sheetId = urlParams.get('id');
 
@@ -35,7 +41,6 @@
         
         const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${finalId}/pub?gid=0&single=true&output=csv`;
 
-        words = []; // initialising as global array
         
         async function loadDictionary() {
             try {
@@ -50,7 +55,7 @@
                             return a.Word.localeCompare(b.Word, undefined, { sensitivity: 'base' });
                         });
                         
-                        displayWords();
+                        displayPage();
                     }
                 });
             } catch (error) {
@@ -58,11 +63,14 @@
             }
         }
 
-        function displayWords() {
+        function displayPage() {
             const container = document.getElementById('dictionary-container');
             container.innerHTML = ''; // Clear the "Loading" text
 
-            words.forEach(entry => {
+            pBegin = (currentPage - 1)*WPP;
+            pEnd = pBegin + WPP;
+            
+            words.slice(pBegin, pEnd).forEach(entry => {
                 // Assuming your columns are named "Word" and "Meaning"
                 if (entry.Word) {
                     const div = document.createElement('div');
