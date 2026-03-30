@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Conlang Dictionary</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+
+    <h1>Dictionary</h1>
+    <div id="dictionary-container">Loading words...</div>
+
+    <script>
+        // Replace this with the URL you copied from "Publish to Web"
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTfKG2OdSxQPoM5KZksk4JTlie4kaMiEvBDE7Tm8BvZsSk88mSQx748HK3W8-zvKXu3bJbFjST8_Lho/pub?gid=0&single=true&output=csv';
+
+        async function loadDictionary() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const csvData = await response.text();
+
+                // PapaParse converts CSV text into a JSON-like array of objects
+                Papa.parse(csvData, {
+                    header: true, // Uses the first row as keys (e.g., "Word", "Definition")
+                    complete: function(results) {
+                        displayWords(results.data);
+                    }
+                });
+            } catch (error) {
+                console.error("Error loading the sheet:", error);
+            }
+        }
+
+        function displayWords(words) {
+            const container = document.getElementById('dictionary-container');
+            container.innerHTML = ''; // Clear the "Loading" text
+
+            words.forEach(entry => {
+                // Assuming your columns are named "Word" and "Meaning"
+                if (entry.Word) {
+                    const div = document.createElement('div');
+                    div.style.marginBottom = '15px';
+                    div.innerHTML = `<strong>${entry.Etese}</strong>: ${entry.English}`;
+                    container.appendChild(div);
+                }
+            });
+        }
+
+        loadDictionary();
+    </script>
+</body>
+</html>
