@@ -40,7 +40,9 @@
                 if (entry.Etese) {
                     const div = document.createElement('div');
                     div.style.marginBottom = '15px';
-                    div.innerHTML = `<strong>${entry.Etese}</strong>: ${entry.English}`;
+                    div.innerHTML = `<strong>${entry.Etese}</strong>: ${entry.English}...
+                    example sentence ${entry.ExampleSentence}
+                    `;
                     container.appendChild(div);
                 }
             });
