@@ -62,12 +62,10 @@
                 if (entry.Word) {
                     const div = document.createElement('div');
                     div.style.marginBottom = '15px';
-
-                    wordHTML = entry.Word.replaceAll("[", "<span class = 'adnot'>").replaceAll("]", "</span>");
                     
                     pageHTML = `
-                    <a>${wordHTML}</a> 
-                    <a style="color: red">${entry.Translation}</a>
+                    <a>${entry.Word.adnotate()}</a> 
+                    <a style="color: red">${entry.Translation.adnotate()}</a>
                     <a>example sentence ${entry.ExSent}</a>
                     `;
                     div.innerHTML = pageHTML;
@@ -78,8 +76,12 @@
             });
             console.log(words);
         }
-
         loadDictionary();
+
+
+        String.prototype.adnotate = function() {
+            return this.replaceAll("[", "<span class = 'adnot'>").replaceAll("]", "</span>");
+        }
     </script>
 </body>
 </html>
