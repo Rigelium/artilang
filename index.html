@@ -60,16 +60,15 @@
                 // Assuming your columns are named "Word" and "Meaning"
                 if (entry.Word) {
                     const div = document.createElement('div');
-                    div.style.marginBottom = '15px';
                     
                     pageHTML = `
                     <a>${entry.Word.adnotate()}</a> 
                     <a style="color: red">${entry.Translation.adnotate()}</a>
                     <a>example sentence ${entry.ExSent}</a>
                     `;
+                    
                     div.innerHTML = pageHTML;
-                    div.style.display = "flex";
-                    div.style.flexDirection = "column";
+                    div.style.cssText = "display: flex; flex-direction: column; margin-bottom: 8px;";
                     container.appendChild(div);
                 }
             });
