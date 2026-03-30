@@ -23,6 +23,28 @@
         .adnot {
             font-style: italic;
         }
+
+         /* The Container */
+ .scroll-container {
+     display: flex;
+     overflow-x: auto;
+     scroll-snap-type: x mandatory; /* Forces snapping on the X axis */
+     scroll-behavior: smooth;
+     width: 100vw;
+     height: auto;
+ }
+
+ /* The Pages */
+ .page {
+     flex: 0 0 100%; /* Each page takes up 100% of the width */
+     height: 100%;
+     scroll-snap-align: start; /* Where the page should "stick" */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 2rem;
+ }
+        
     </style>
 </head>
 <body>
@@ -34,7 +56,9 @@
         
         let words = []; // initialising as global array
         let currentPage = 1;
-        const WPP = 20;
+        const columns = 3;
+        const WPC = 10;
+        const WPP = WPC*columns;
 
         // --------------------------------------------------
         const urlParams = new URLSearchParams(window.location.search);
@@ -70,8 +94,14 @@
         function displayPage() {
             const container = document.getElementById('dictionary-container');
             container.innerHTML = ''; // Clear the "Loading" text
+            container.classList.add("scroll-container");
 
-            pBegin = (currentPage - 1)*WPP;
+            totalPages = Math.ceil(words.length()/WPP);
+
+
+            loadingPage = 1;
+            for(loadingPage = 1; loadingPage <= )
+            pBegin = (loadingPage - 1)*WPP;
             pEnd = pBegin + WPP;
             
             words.slice(pBegin, pEnd).forEach(entry => {
