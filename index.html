@@ -37,13 +37,14 @@
 
             words.forEach(entry => {
                 // Assuming your columns are named "Word" and "Meaning"
-                if (entry.Word) {
+                if (entry.Etese) {
                     const div = document.createElement('div');
                     div.style.marginBottom = '15px';
                     div.innerHTML = `<strong>${entry.Etese}</strong>: ${entry.English}`;
                     container.appendChild(div);
                 }
             });
+            console.log(words);
         }
 
         loadDictionary();
