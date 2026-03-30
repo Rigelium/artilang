@@ -110,8 +110,10 @@
                 pBegin = (loadingPage - 1)*WPP;
                 pEnd = pBegin + WPP;
     
-                
+                i = 0;
                 words.slice(pBegin, pEnd).forEach(entry => {
+                    newCol = i % WPC == 0;
+                    i++;
                     // Assuming your columns are named "Word" and "Meaning"
                     if (entry.Word) {
                         const div = document.createElement('div');
