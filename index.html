@@ -8,9 +8,11 @@
     <style>
         body {
             font-family: arial;
+            background-color: black;
         }
         a {
             font-size: 1.5rem;
+            
         }
         .adnot {
             font-style: italic;
@@ -23,8 +25,13 @@
     <div id="dictionary-container">Loading words...</div>
 
     <script>
-        // Replace this with the URL you copied from "Publish to Web"
-        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTfKG2OdSxQPoM5KZksk4JTlie4kaMiEvBDE7Tm8BvZsSk88mSQx748HK3W8-zvKXu3bJbFjST8_Lho/pub?gid=0&single=true&output=csv';
+        const urlParams = new URLSearchParams(window.location.search);
+        const sheetId = urlParams.get('id');
+
+        const defaultId = '2PACX-1vTfKG2OdSxQPoM5KZksk4JTlie4kaMiEvBDE7Tm8BvZsSk88mSQx748HK3W8-zvKXu3bJbFjST8_Lho';
+        const finalId = sheetId || defaultId;
+        
+        const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${finalId}/pub?gid=0&single=true&output=csv`;
 
         words = []; // initialising as global array
         
