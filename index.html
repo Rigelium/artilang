@@ -14,6 +14,8 @@
         // Replace this with the URL you copied from "Publish to Web"
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTfKG2OdSxQPoM5KZksk4JTlie4kaMiEvBDE7Tm8BvZsSk88mSQx748HK3W8-zvKXu3bJbFjST8_Lho/pub?gid=0&single=true&output=csv';
 
+        words = []; // initialising as global array
+        
         async function loadDictionary() {
             try {
                 const response = await fetch(SHEET_URL);
@@ -23,7 +25,8 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        displayWords(results.data);
+                        words = results.data;
+                        displayWords();
                     }
                 });
             } catch (error) {
@@ -31,7 +34,7 @@
             }
         }
 
-        function displayWords(words) {
+        function displayWords() {
             const container = document.getElementById('dictionary-container');
             container.innerHTML = ''; // Clear the "Loading" text
 
