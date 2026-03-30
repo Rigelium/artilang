@@ -7,7 +7,11 @@
 
     <style>
         :root {
-            --col1: #1C110A;
+            --col1: #F6AE2D;
+            --col2: #1D110A;
+            --col3: #FCFFF7;
+            --col4: #296EB4;
+            --col5: #1789FC;
         }
         body {
             font-family: arial;
@@ -77,8 +81,7 @@
                     
                     pageHTML = `
                     <a>${entry.Word.adnotate()}</a> 
-                    <a style="color: red">${entry.Translation.adnotate()}</a>
-                    <a>example sentence ${entry.ExSent}</a>
+                    <a style="color: var(--col4)">${entry.Translation.adnotate()}</a>
                     `;
                     
                     div.innerHTML = pageHTML;
