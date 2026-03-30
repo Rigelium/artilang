@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <title>My Conlang Dictionary</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <styles>
+        body {
+        font-family: arial;
+        }
+        
+        .adnot {
+        font-style: italic;
+        
+        }
+    </styles>
 </head>
 <body>
 
@@ -43,8 +54,11 @@
                 if (entry.Word) {
                     const div = document.createElement('div');
                     div.style.marginBottom = '15px';
+
+                    wordHTML = entry.Word.replaceAll("[", "<span class = 'adnot'>").replaceAll("]", "</span>");
+                    
                     pageHTML = `
-                    <a>${entry.Word}</a> 
+                    <a>${wordHTML}</a> 
                     <a style="color: red">${entry.Translation}</a>
                     <a>example sentence ${entry.ExSent}</a>
                     `;
