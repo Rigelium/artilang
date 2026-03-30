@@ -46,7 +46,10 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        words = results.data;
+                        words = results.data.sort((a, b) => {
+                            return a.Word.localeCompare(b.Word, undefined, { sensitivity: 'base' });
+                        });
+                        
                         displayWords();
                     }
                 });
