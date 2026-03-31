@@ -233,8 +233,26 @@
         loadDictionary();
 
         function applyFilters() {
+            // BASIC FILTERS (query text)
             const query = document.getElementById("input-query").value;
-            let results = words.filter((word) => word.Word.includes(query) || word.Translation.includes(query));
+            queryArr = [];
+            query.split(/(?=[#@])/).forEach((element) => queryArr = queryArr.concat(element.trim()));
+            let tags = [];
+            let POS = [];
+            let queryText;
+            
+            queryArr.forEach((part) => {
+                if (part.includes("@")) POS = POS.concat(part.slice(1));
+                else if (part.includes("#")) tags = tags.concat(part.slice(1));
+                else queryText = part;
+            });
+            
+            
+            let results = words.filter((word) => 
+                word.Word.includes(query) ||
+                word.Translation.includes(query) ||
+                
+                                      );
             return results;
         }
 
