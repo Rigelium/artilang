@@ -94,7 +94,7 @@
             <a style="color: var(--col3)"> Search </a>
         </div>
     </div>
-    <button id="toggleBtn">Click to Reveal</button>
+    <div onclick="showAdvanced">Click to Reveal</div>
 
     <div class="reveal-wrapper" id="revealWrapper">
       <div class="reveal-content">
@@ -113,16 +113,15 @@
         const WPP = WPC*columns;
 
         // --------------------------------------------------
-        const btn = document.getElementById('toggleBtn');
-const wrapper = document.getElementById('revealWrapper');
-
-btn.addEventListener('click', () => {
-  wrapper.classList.toggle('is-open');
-  
-  // Optional: Change button text
-  const isOpen = wrapper.classList.contains('is-open');
-  btn.textContent = isOpen ? 'Click to Hide' : 'Click to Reveal';
-});
+        const wrapper = document.getElementById('revealWrapper');
+        
+        function showAdvanced() {
+          wrapper.classList.toggle('is-open');
+          
+          // Optional: Change button text
+          const isOpen = wrapper.classList.contains('is-open');
+          btn.textContent = isOpen ? 'Click to Hide' : 'Click to Reveal';
+        }
         
         const urlParams = new URLSearchParams(window.location.search);
         const sheetId = urlParams.get('id');
