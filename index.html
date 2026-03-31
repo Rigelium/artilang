@@ -62,7 +62,27 @@
              /*flex-direction: column;*/
              justify-content: space-between;
          }
+        /* The container that handles the animation */
+        .reveal-wrapper {
+          display: grid;
+          grid-template-rows: 0fr; /* Effectively hidden */
+          transition: grid-template-rows 0.5s ease-out;
+          overflow: hidden;
+          background: #f4f4f4;
+          border-radius: 8px;
+        }
         
+        /* This inner div is necessary for the browser to calculate height correctly */
+        .reveal-content {
+          min-height: 0; 
+          padding: 0 20px; /* Horizontal padding is fine */
+        }
+        
+        /* The "Open" State */
+        .reveal-wrapper.is-open {
+          grid-template-rows: 1fr; /* Expands to fit content */
+          margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +94,14 @@
             <a style="color: var(--col3)"> Search </a>
         </div>
     </div>
+    <button id="toggleBtn">Click to Reveal</button>
+
+    <div class="reveal-wrapper" id="revealWrapper">
+      <div class="reveal-content">
+        <p>Surprise! This content slid down smoothly. You can put anything here—text, images, or even more buttons.</p>
+      </div>
+    </div>
+    
     <div id="dictionary-container">Loading words...</div>
 
     <script>
@@ -85,6 +113,17 @@
         const WPP = WPC*columns;
 
         // --------------------------------------------------
+        const btn = document.getElementById('toggleBtn');
+const wrapper = document.getElementById('revealWrapper');
+
+btn.addEventListener('click', () => {
+  wrapper.classList.toggle('is-open');
+  
+  // Optional: Change button text
+  const isOpen = wrapper.classList.contains('is-open');
+  btn.textContent = isOpen ? 'Click to Hide' : 'Click to Reveal';
+});
+        
         const urlParams = new URLSearchParams(window.location.search);
         const sheetId = urlParams.get('id');
 
