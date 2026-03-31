@@ -15,6 +15,9 @@
 
             --gray1: #e4e7eb;
             --gray2: #cbced1;
+            --gray3: #828688;
+            --gray4: #48494b;
+            --gray5: #242425;
             
 
             --grad-blue: linear-gradient(var(--col5), var(--col4));
@@ -32,6 +35,8 @@
         }
         .adnot {
             font-style: italic;
+            font-size: 1.5rem; 
+            opacity: 0.7;
             
         }
         .button {
@@ -132,7 +137,7 @@
           
           // Optional: Change button text
           const isOpen = wrapper.classList.contains('is-open');
-          document.getElementById("filters-text").textContent = isOpen ? 'Show filters' : 'Hide filters';
+          document.getElementById("filters-text").textContent = isOpen ? 'Hide filters' : 'Show filters';
         }
         
         const urlParams = new URLSearchParams(window.location.search);
