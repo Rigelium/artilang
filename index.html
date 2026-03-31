@@ -239,7 +239,7 @@
             query.split(/(?=[#@])/).forEach((element) => queryArr = queryArr.concat(element.trim()));
             let tags = [];
             let POS = [];
-            let queryText;
+            let queryText = "";
             
             queryArr.forEach((part) => {
                 if (part.includes("@")) POS = POS.concat(part.slice(1));
