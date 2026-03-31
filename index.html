@@ -249,14 +249,14 @@
             
             
             let results = words.filter((word) => 
-                (word.Word.includes(queryText) || word.Translation.includes(queryText)) // BASIC SEARCH
-                                       &&
-                (word.Tags.some(element => word.Tags.includes(element)) || tags.length == 0)
+                const matchingText = (word.Word.includes(queryText) || word.Translation.includes(queryText)); // BASIC SEARCH
+                                       
+                const tagsFound = tags.some(t => word.Tags.includes(t)) || tags.length == 0);
             
 
                                        
                 
-                
+                return matchingText && tagsFound;
                                       );
             return results;
         }
