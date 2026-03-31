@@ -251,8 +251,9 @@
             let results = words.filter((word) => {
                 const matchingText = (word.Word.includes(queryText) || word.Translation.includes(queryText)); // BASIC SEARCH
                 const tagsFound = tags.some(t => word.Tags.includes(t)) || tags.length == 0;
+                const POScheck = POS.some(t => word.Category.includes(t)) || POS.length == 0;
                             
-                return matchingText && tagsFound;
+                return matchingText && tagsFound && POScheck;
             });
             return results;
         }
