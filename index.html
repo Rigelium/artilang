@@ -15,6 +15,7 @@
         }
         body {
             font-family: arial;
+            font-size: 2em;
         }
         a {
             font-size: 2rem;
@@ -30,6 +31,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+        }
+        
+        input::placeholder {
+          font-size: 2em;
+          /*opacity: 1;  Ensures consistent color across browsers */
         }
         
          /* The Container */
@@ -57,10 +63,10 @@
 <body>
 
     <h1>Dictionary</h1>
-    <div style="display: flex; height: 50px;">
+    <div style="display: flex; height: 50px; margin-bottom: 10px;">
         <input id="input-query" placeholder="Enter query here">
         <div class="button" onclick="displayPage()">
-            Search
+            <a style="color: var(--col3)"> Search </a>
         </div>
     </div>
     <div id="dictionary-container">Loading words...</div>
