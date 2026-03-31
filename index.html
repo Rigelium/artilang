@@ -132,12 +132,13 @@
         const WPP = WPC*columns;
 
         // --------------------------------------------------
-        const container = document.querySelector('.scroll-container');
+       
+        const scrollContainer = document.querySelector('.scroll-container');
 
         function goToPage(pageIndex) {
-          const pageWidth = container.offsetWidth;
+          const pageWidth = scrollContainer.offsetWidth;
           
-          container.scrollTo({
+          scrollContainer.scrollTo({
             left: pageIndex * pageWidth,
             behavior: 'smooth'
           });
