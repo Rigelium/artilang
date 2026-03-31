@@ -23,33 +23,42 @@
         .adnot {
             font-style: italic;
         }
+        .button {
+            border-radius: 2px;
+            padding: 2px;
+            background-image: linear-gradient(var(--col4), var(--col5));
+            
+        }
         
-
          /* The Container */
- .scroll-container {
-     display: flex;
-     overflow-x: auto;
-     scroll-snap-type: x mandatory; /* Forces snapping on the X axis */
-     scroll-behavior: smooth;
-     width: 100vw;
-     height: auto;
- }
+         .scroll-container {
+             display: flex;
+             overflow-x: auto;
+             scroll-snap-type: x mandatory; /* Forces snapping on the X axis */
+             scroll-behavior: smooth;
+             width: 100vw;
+             height: auto;
+         }
 
- /* The Pages */
- .page {
-     flex: 0 0 100%; /* Each page takes up 100% of the width */
-     height: 100%;
-     scroll-snap-align: start; /* Where the page should "stick" */
-     display: flex;
-     /*flex-direction: column;*/
-     justify-content: space-between;
- }
+         /* The Pages */
+         .page {
+             flex: 0 0 100%; /* Each page takes up 100% of the width */
+             height: 100%;
+             scroll-snap-align: start; /* Where the page should "stick" */
+             display: flex;
+             /*flex-direction: column;*/
+             justify-content: space-between;
+         }
         
     </style>
 </head>
 <body>
 
     <h1>Dictionary</h1>
+    <input id="input-query" placeholder="Enter query here">
+    <div class="button">
+        Search
+    </div>
     <div id="dictionary-container">Loading words...</div>
 
     <script>
