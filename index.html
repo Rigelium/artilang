@@ -23,6 +23,7 @@
         .adnot {
             font-style: italic;
         }
+        
 
          /* The Container */
  .scroll-container {
@@ -42,7 +43,7 @@
      display: flex;
      /*flex-direction: column;*/
      align-items: center;
-     justify-content: center;
+     justify-content: space-between;
      font-size: 2rem;
  }
         
@@ -112,7 +113,7 @@
 
                 for (loadingColumn = 1; loadingColumn <= columns; loadingColumn++) {
                     const column = document.createElement('div');
-                    column.style.cssText = "display: flex; flex-direction: column; margin-bottom: 8px;";
+                    column.style.cssText = "display: flex; flex-direction: column; width: 30%;";
                     addToIdx = (loadingColumn-1)*WPC;
 
                     
