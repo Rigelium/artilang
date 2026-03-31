@@ -94,15 +94,15 @@
             <a style="color: var(--col3)"> Search </a>
         </div>
     </div>
-    <div onclick="showAdvanced">Click to Reveal</div>
+    <div onclick="showAdvanced()">Click to Reveal</div>
 
     <div class="reveal-wrapper" id="revealWrapper">
       <div class="reveal-content">
-        <p>Surprise! This content slid down smoothly. You can put anything here—text, images, or even more buttons.</p>
+        <p id="filters-text">Surprise! This content slid down smoothly. You can put anything here—text, images, or even more buttons.</p>
       </div>
     </div>
     
-    <div id="dictionary-container">Loading words...</div>
+    <div id="dictionary-container" style="margin-top: 15px;">Loading words...</div>
 
     <script>
         
@@ -120,7 +120,7 @@
           
           // Optional: Change button text
           const isOpen = wrapper.classList.contains('is-open');
-          btn.textContent = isOpen ? 'Click to Hide' : 'Click to Reveal';
+          document.getElementById("filters-text").textContent = isOpen ? 'Click to Hide' : 'Click to Reveal';
         }
         
         const urlParams = new URLSearchParams(window.location.search);
