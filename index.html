@@ -212,7 +212,7 @@
                         
                         if (entry.Word) {
                             const div = document.createElement('div');
-                            POSHTML = (`[(${entry.Word.Category}.)]`).adnotate;
+                            POSHTML = (`[(${entry.Category}.)]`).adnotate();
                             
                             pageHTML = `
                             <a>${entry.Word.adnotate()} ${POSHTML}</a> 
