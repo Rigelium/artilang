@@ -112,12 +112,7 @@
     
                 i = 0;
                 words.slice(pBegin, pEnd).forEach(entry => {
-                    let column;
                     newCol = i % WPC == 0;
-                    if(newCol) {
-                        column = document.createElement('div');
-                        column.style.cssText = "display: flex; flex-direction: column; margin-bottom: 8px; width: 30%;";
-                    }
                     i++;
                     // Assuming your columns are named "Word" and "Meaning"
                     if (entry.Word) {
@@ -130,8 +125,7 @@
                         
                         div.innerHTML = pageHTML;
                         div.style.cssText = "display: flex; flex-direction: column; margin-bottom: 8px;";
-                        column.appendChild(div);
-                        if (newCol) { section.appendChild(column); }
+                        section.appendChild(div);
                     }
                 });
                 container.appendChild(section);
