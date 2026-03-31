@@ -134,15 +134,15 @@
 
         //=============================================================
        
-        const scrollContainer = document.querySelector('.scroll-container');
 
-        function goToPage(pageIndex) {
-          const pageWidth = scrollContainer.offsetWidth;
+        async function goToPage(pageIndex) {
+            const scrollContainer = document.querySelector('.scroll-container');
+            const pageWidth = scrollContainer.offsetWidth;
           
-          scrollContainer.scrollTo({
-            left: pageIndex * pageWidth,
-            behavior: 'smooth'
-          });
+            scrollContainer.scrollTo({
+                left: pageIndex * pageWidth,
+                behavior: 'smooth'
+            });
         }
         //==============================================================
         // 1. Select all your pages and the container
