@@ -251,7 +251,7 @@
             let results = words.filter((word) => 
                 (word.Word.includes(queryText) || word.Translation.includes(queryText)) // BASIC SEARCH
                                        &&
-                (word.Tags.some((element) => word.Tags.includes(element) || tags.length == 0)
+                (word.Tags.some((element) => word.Tags.includes(element) || tags.length == 0))
             
 
                                        
