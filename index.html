@@ -146,34 +146,36 @@
         }
         //==============================================================
         // 1. Select all your pages and the container
-const pages = document.querySelectorAll('.page');
-const observerOptions = {
-  root: document.querySelector('.scroll-container'), // The scrollable parent
-  threshold: 0.6 // Trigger when 60% of the page is visible
-};
-
-// 2. Define what happens when a page "snaps" into view
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Get the index or ID of the visible page
-      const pageId = entry.target.id;
-      const pageIndex = Array.from(pages).indexOf(entry.target) + 1;
-      
-      console.log(`Current Page: ${pageIndex}`);
-      updateUI(pageIndex); // Call a function to update your navigation
-    }
-  });
-}, observerOptions);
-
-// 3. Start watching each page
-pages.forEach(page => observer.observe(page));
-
-function updateUI(index) {
-  // Example: Update a page counter text
-  document.getElementById('page-counter').textContent = `Page ${index} of ${pages.length}`;
-}
-
+        async function pageCounter() {
+            const pages = document.querySelectorAll('.page');
+            const observerOptions = {
+              root: document.querySelector('.scroll-container'), // The scrollable parent
+              threshold: 0.6 // Trigger when 60% of the page is visible
+            };
+            
+            // 2. Define what happens when a page "snaps" into view
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  // Get the index or ID of the visible page
+                  const pageId = entry.target.id;
+                  const pageIndex = Array.from(pages).indexOf(entry.target) + 1;
+                  
+                  console.log(`Current Page: ${pageIndex}`);
+                  updateUI(pageIndex); // Call a function to update your navigation
+                }
+              });
+            }, observerOptions);
+            
+            // 3. Start watching each page
+            pages.forEach(page => observer.observe(page));
+            
+            function updateUI(index) {
+              // Example: Update a page counter text
+              document.getElementById('page-counter').textContent = `Page ${index} of ${pages.length}`;
+            }
+        }
+        
 
         //===============================================================================
         
