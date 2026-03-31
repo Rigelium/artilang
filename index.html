@@ -156,7 +156,7 @@
         loadDictionary();
 
         function applyFilters() {
-            const query = document.getElementById("input-query");
+            const query = document.getElementById("input-query").value;
             let results = words.filter((word) => word.Word.includes(query) || word.Translation.includes(query));
             return results;
         }
