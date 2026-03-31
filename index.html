@@ -132,6 +132,17 @@
         const WPP = WPC*columns;
 
         // --------------------------------------------------
+        const container = document.querySelector('.dictionary-container');
+
+        function goToPage(pageIndex) {
+          const pageWidth = container.offsetWidth;
+          
+          container.scrollTo({
+            left: pageIndex * pageWidth,
+            behavior: 'smooth'
+          });
+        }
+        
         const wrapper = document.getElementById('revealWrapper');
         
         function showAdvanced() {
