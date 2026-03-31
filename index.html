@@ -12,6 +12,14 @@
             --col3: #FCFFF7;
             --col4: #296EB4;
             --col5: #1789FC;
+
+            --gray1: #e4e7eb;
+            --gray2: #48494b;
+
+            --grad-blue: linear-gradient(var(--col5), var(--col4));
+            --grad-gray: linear-gradient(var(--gray1), var(--gray2));
+
+                
         }
         body {
             font-family: arial;
@@ -23,6 +31,7 @@
         }
         .adnot {
             font-style: italic;
+            
         }
         .button {
             display: flex;
@@ -95,7 +104,7 @@
         </div>
     </div>
     <div onclick="showAdvanced()" >
-        <a id="filters-text">Show filters</a>
+        <a id="filters-text" class="button" style="background: var(--grad-gray)">Show filters</a>
     </div>
 
     <div class="reveal-wrapper" id="revealWrapper">
