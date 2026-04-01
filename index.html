@@ -122,6 +122,7 @@
     </div>
 
     <a id="page-counter"></a>
+    <a id="results-counter"></a>
     <div id="dictionary-container" style="margin-top: 15px;">Loading words...</div>
 
     <script>
@@ -234,6 +235,7 @@
             container.classList.add("scroll-container");
 
             searchResults = applyFilters(words);
+            document.getElementById("results-counter").textContent = `Results found: ${searchResults.length}`;
             
             
             totalPages = Math.ceil(searchResults.length/WPP);
@@ -301,9 +303,10 @@
                 const matchingText = (word.Word.includes(queryText) || word.Translation.includes(queryText)); // BASIC SEARCH
                 const tagsFound = tags.some(t => word.Tags.includes(t)) || tags.length == 0;
                 const POScheck = POS.some(t => word.Category.includes(t)) || POS.length == 0;
-                            
+                
                 return matchingText && tagsFound && POScheck;
             });
+            
             return results;
         }
 
