@@ -263,7 +263,7 @@
             container.classList.add("scroll-container");
 
             searchResults = applyFilters(words);
-            document.getElementById("results-counter").textContent = `Results found: ${searchResults.length}`;
+            document.getElementById("results-counter").textContent = `(${searchResults.length} entries found)`;
             
             
             totalPages = Math.ceil(searchResults.length/WPP);
