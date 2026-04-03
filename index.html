@@ -122,12 +122,23 @@
 
     <div class="reveal-wrapper" id="revealWrapper">
       <div class="reveal-content">
-        <a>You can search by tags and parts of speech eg. "red @adj #colors"</a><br>
-        <a>Part of speech tags: @n @v @adj @adv @num @pro</a>
+          <h3 style="margin-top: 10px; margin-bottom: 10px;">Tags and categories</h3>
+          <a>You can search by tags and categories eg. "red @adj #colors"</a><br>
+          
+          <h3 style="margin-top: 10px; margin-bottom: 10px;">Search by following languages</h3>
           <label class="checkbox">
-              <input type="checkbox" style="transform: scale(2);">
-              <a>Test</a>
+              <input type="checkbox" style="transform: scale(2);" id="cbox-input-lang">
+              <a>Input language</a>
           </label>
+          <label class="checkbox">
+              <input type="checkbox" style="transform: scale(2);" id="cbox-output-lang">
+              <a>Output language</a>
+          </label>
+          <label class="checkbox">
+              <input type="checkbox" style="transform: scale(2);" id="cbox-other-lang">
+              <a>Other translations</a>
+          </label>
+          
       </div>
     </div>
 
@@ -142,6 +153,11 @@
         const columns = 3;
         const WPC = 10;
         const WPP = WPC*columns;
+
+        const cboxInputLang = document.getElementById("cbox-input-lang");
+        const cboxOutputLang = document.getElementById("cbox-output-lang");
+        const cboxOtherLang = document.getElementById("cbox-output-lang");
+        cboxInputLang.checked, cboxOutputLang.checked, cboxOtherlang.checked = true;
 
         //=============================================================
        
