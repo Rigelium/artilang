@@ -357,7 +357,7 @@
             const bold = endings.replaceAll("(*", "<span style='font-weight: bold;'>");
             const italic = bold.replaceAll("(/", "<span style='font-style: italic;'>");
             const underlined = italic.replaceAll("(_", "<span style='text-decoration: underline;'>");
-            const large = underlined.replaceAll("(_", "<span style='font-size: 2.5rem;'>");
+            const large = underlined.replaceAll("(+", "<span style='font-size: 2.5rem;'>");
             const newLine = large.replaceAll("&&", `</a><br><a ${styling}>`)
             const final = `<a ${styling}> ${newLine} </a>`
             return final;
