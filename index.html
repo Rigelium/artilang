@@ -99,6 +99,12 @@
           grid-template-rows: 1fr; /* Expands to fit content */
           
         }
+        .checkbox {
+          font-size: 2em;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +124,10 @@
       <div class="reveal-content">
         <a>You can search by tags and parts of speech eg. "red @adj #colors"</a><br>
         <a>Part of speech tags: @n @v @adj @adv @num @pro</a>
+          <label class="checkbox">
+              <input type="checkbox" style="transform: scale(2);">
+              <a>Test</a>
+          </label>
       </div>
     </div>
 
