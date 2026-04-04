@@ -445,8 +445,10 @@ el.addEventListener('touchend', () => {
             
             let defHTML = `
             <a>${passedEntry.Word.adnotate()} - ${passedEntry.Translation}</a>
-            ${passedEntry.AdditionalInfo.stylise("")}
+            <div style="display: flex;">${tagsHTML}</div>
+            <div>${passedEntry.AdditionalInfo.stylise("")}</div>
             `;
+            
 
             definition.classList.remove("hidden");
             definition.innerHTML = defHTML;
