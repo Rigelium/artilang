@@ -337,8 +337,8 @@ el.addEventListener('touchend', () => {
                 section.classList.add('page');
 
                 
-                pBegin = (loadingPage - 1)*WPP;
-                pEnd = pBegin + WPC;
+                const pBegin = (loadingPage - 1)*WPP;
+                const pEnd = pBegin + WPC;
 
                 for (loadingColumn = 1; loadingColumn <= columns; loadingColumn++) {
                     const column = document.createElement('div');
