@@ -232,6 +232,7 @@
                   const pageIndex = Array.from(pages).indexOf(entry.target) + 1;
                   
                   console.log(`Current Page: ${pageIndex}`);
+                    currentPage = pageIndex;
                   updateUI(pageIndex); // Call a function to update your navigation
                 }
               });
