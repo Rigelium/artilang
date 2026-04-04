@@ -347,6 +347,7 @@ el.addEventListener('touchend', () => {
 
                     
                     searchResults.slice(pBegin+addToIdx, pEnd+addToIdx).forEach((entry, i) => {
+                        currIndex = pBegin+addToIdx+i;
                         
                         if (entry.Word) {
                             const div = document.createElement('div');
@@ -358,7 +359,7 @@ el.addEventListener('touchend', () => {
                             `;
                             
                             div.innerHTML = pageHTML;
-                            div.onclick = () => loadDef(i);
+                            div.addEventListener('click', () => loadDef(currIndex));
                             div.style.cssText = "display: flex; flex-direction: column; margin-bottom: 8px;";
                             column.appendChild(div);
                         }
