@@ -110,7 +110,8 @@
             bottom: 0; /* Let's assume it starts at the bottom */
             left: 0;
             width: 100%;
-            height: 300px;
+            height: auto;
+            min-height: 40vh;
             background: white;
             box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
             touch-action: none; /* Prevents the whole page from scrolling while swiping this */
@@ -133,7 +134,8 @@
 
     <div class="definition hidden" id="definition">
         <a id="definition-header"></a>
-        <a id="definition-desc"></a>
+        <a id="definition-tags"></a>
+        <div id="definition-desc"></div>
     </div>
 
     <h1>Dictionary</h1>
@@ -423,6 +425,7 @@ el.addEventListener('touchend', () => {
 
             definition.classList.remove("hidden");
             defHeader.textContent = passedEntry.Word;
+            defDesc.innerHtml = passedEntry.AdditionalInfo.stylise("");
         }
 
         
