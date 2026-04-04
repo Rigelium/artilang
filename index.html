@@ -443,10 +443,15 @@ el.addEventListener('touchend', () => {
                      </div>
                  ` ;
             });
+            tagsHTML = `<div style="display: flex;">${tagsHTML}</div>`;
+            if (passedEntry.Tags.length == 0) {
+                tagsHTML = "";
+            }
+            
             
             let defHTML = `
             <a>${passedEntry.Word.adnotate()} - ${passedEntry.Translation}</a>
-            <div style="display: flex;">${tagsHTML}</div>
+            ${tagsHTML}
             <div>${passedEntry.AdditionalInfo.stylise("")}</div>
             `;
             
