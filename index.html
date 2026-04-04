@@ -331,13 +331,13 @@
 
                 
                 let matchingInput = false; let matchingOutput = false; let matchingOther = false;
-                if (cboxInputLang = true) {
+                if (cboxInputLang) {
                     if (word.Word.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingInput = true;
                 }
-                if (cboxOutputLang = true) {
+                if (cboxOutputLang) {
                     if (word.Translation.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingOutput = true;
                 }
-                if (cboxOtherLang = true) {
+                if (cboxOtherLang) {
                     if (word.OtherTranslations.replace(/\[.*?\]/g, "").includes(queryText)) matchingOther = true;
                 }
                 
