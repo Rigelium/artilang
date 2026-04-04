@@ -423,6 +423,10 @@ el.addEventListener('touchend', () => {
             const defHeader = document.getElementById("definition-header");
             const defDesc = document.getElementById("definition-desc");
 
+            let defHTML = `
+            
+            `;
+
             definition.classList.remove("hidden");
             defHeader.textContent = passedEntry.Word;
             defDesc.innerHTML = passedEntry.AdditionalInfo.stylise("");
