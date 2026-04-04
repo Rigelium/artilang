@@ -423,6 +423,15 @@ el.addEventListener('touchend', () => {
             const defHeader = document.getElementById("definition-header");
             const defDesc = document.getElementById("definition-desc");
 
+            let tagsHTML = "";
+            passedEntry.Tags.split(",").forEach((tag) => {
+                 tagsHTML += `
+                     <div class="word-tags">
+                         <a>#${tag.trim()}</a>
+                     </div>
+                 ` ;
+            });
+            
             let defHTML = `
             
             `;
