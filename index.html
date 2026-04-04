@@ -409,13 +409,13 @@ el.addEventListener('touchend', () => {
                 
                 let matchingInput = false; let matchingOutput = false; let matchingOther = false;
                 if (cboxInputLang.checked) {
-                    if (word.Word.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingInput = true;
+                    if (word.Word.replaceAll("[", "").replaceAll("]", "").toLowerCase.includes(queryText).toLowerCase()) matchingInput = true;
                 }
                 if (cboxOutputLang.checked) {
-                    if (word.Translation.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingOutput = true;
+                    if (word.Translation.replaceAll("[", "").replaceAll("]", "").toLowerCase().includes(queryText.toLowerCase())) matchingOutput = true;
                 }
                 if (cboxOtherLang.checked) {
-                    if (word.OtherTranslations.replace(/\[.*?\]/g, "").includes(queryText)) matchingOther = true;
+                    if (word.OtherTranslations.replace(/\[.*?\]/g, "").toLowerCase().includes(queryText.toLowerCase())) matchingOther = true;
                 }
                 
                 const matchingText = matchingInput || matchingOutput || matchingOther;
