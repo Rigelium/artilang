@@ -106,16 +106,25 @@
           gap: 10px;
         }
         .definition {
-            transition: transform 2s;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 400px;
-            background-color: red;
+          position: fixed;
+          bottom: 0; /* Let's assume it starts at the bottom */
+          left: 0;
+          width: 100%;
+          height: 300px;
+          background: white;
+          box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+          touch-action: none; /* Prevents the whole page from scrolling while swiping this */
+          will-change: transform;
+          /* We only want transitions when the user LEAVES the element */
+          transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .definition.is-hidden {
-            transform: translateY(100vh);
+        
+        .definition.is-dragging {
+          transition: none; /* Kill the transition so it follows the finger instantly */
+        }
+        
+        .definition.hidden {
+          transform: translateY(100%);
         }
     </style>
 </head>
@@ -223,6 +232,41 @@
         
 
         //===============================================================================
+
+        const el = document.querySelector('.definition');
+let startY = 0;
+let currentDeltaY = 0;
+
+el.addEventListener('touchstart', (e) => {
+  startY = e.touches[0].clientY;
+  el.classList.add('is-dragging'); // Remove transitions for instant feedback
+}, {passive: true});
+
+el.addEventListener('touchmove', (e) => {
+  const currentY = e.touches[0].clientY;
+  currentDeltaY = currentY - startY;
+
+  // Only allow swiping DOWN (positive delta)
+  if (currentDeltaY > 0) {
+    el.style.transform = `translateY(${currentDeltaY}px)`;
+  }
+}, {passive: true});
+
+el.addEventListener('touchend', () => {
+  el.classList.remove('is-dragging'); // Put transitions back for the "snap"
+  el.style.transform = ''; // Clear the inline style so CSS classes take over
+
+  // Decision Logic: If swiped more than 100px, hide it. Otherwise, snap back.
+  if (currentDeltaY > 100) {
+    el.classList.add('hidden');
+  } else {
+    el.classList.remove('hidden');
+  }
+  
+  currentDeltaY = 0; // Reset for next time
+});
+
+        //=====================================================================
         
         const wrapper = document.getElementById('revealWrapper');
         
