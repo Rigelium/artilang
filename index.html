@@ -105,9 +105,25 @@
           align-items: center;
           gap: 10px;
         }
+        .definition {
+            transition: transform 2s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 400px;
+            background-color: red;
+        }
+        .definition.is-hidden {
+            transform: translateY(100vh);
+        }
     </style>
 </head>
 <body>
+
+    <div class="definition">
+        
+    </div>
 
     <h1>Dictionary</h1>
     <div style="display: flex; height: 80px; margin-bottom: 10px;">
