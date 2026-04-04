@@ -328,9 +328,24 @@
             
             
             let results = words.filter((word) => {
-                const matchingText = (word.Word.replaceAll("[", "").replaceAll("]", "").includes(queryText) || word.Translation.replaceAll("[", "").replaceAll("]", "").includes(queryText)); // BASIC SEARCH
-                const tagsFound = tags.some(t => word.Tags.includes(t)) || tags.length == 0;
-                const POScheck = POS.some(t => word.Category.includes(t)) || POS.length == 0;
+
+                
+                let matchingInput = false; let matchingOutput = false; let matchingOther = false;
+                if (cboxInputLang = true) {
+                    if (word.Word.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingInput = true;
+                }
+                if (cboxOutputLang = true) {
+                    if (word.Translation.replaceAll("[", "").replaceAll("]", "").includes(queryText)) matchingOutput = true;
+                }
+                if (cboxOtherLang = true) {
+                    if (word.OtherTranslations.replace(/\[.*?\]/g, "").includes(queryText)) matchingOther = true;
+                }
+                
+                const matchingText = matchingInput || matchingOutput || matchingOther;
+                //const matchingText = (word.Word.replaceAll("[", "").replaceAll("]", "").includes(queryText) || word.Translation.replaceAll("[", "").replaceAll("]", "").includes(queryText)); // BASIC SEARCH
+               
+                const tagsFound = tags.length == 0 || tags.some(t => word.Tags.includes(t));
+                const POScheck = POS.length == 0 || POS.some(t => word.Category.includes(t));
                 
                 return matchingText && tagsFound && POScheck;
             });
