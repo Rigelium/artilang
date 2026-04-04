@@ -410,7 +410,7 @@ el.addEventListener('touchend', () => {
                 
                 let matchingInput = false; let matchingOutput = false; let matchingOther = false;
                 if (cboxInputLang.checked) {
-                    if (word.Word.replaceAll("[", "").replaceAll("]", "").toLowerCase().includes(queryText).toLowerCase()) matchingInput = true;
+                    if (word.Word.replaceAll("[", "").replaceAll("]", "").toLowerCase().includes(queryText.toLowerCase())) matchingInput = true;
                 }
                 if (cboxOutputLang.checked) {
                     if (word.Translation.replaceAll("[", "").replaceAll("]", "").toLowerCase().includes(queryText.toLowerCase())) matchingOutput = true;
