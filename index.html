@@ -131,8 +131,9 @@
 </head>
 <body>
 
-    <div class="definition hidden">
-        
+    <div class="definition hidden" id="definition">
+        <a id="definition-header"></a>
+        <a id="definition-desc"></a>
     </div>
 
     <h1>Dictionary</h1>
@@ -416,8 +417,11 @@ el.addEventListener('touchend', () => {
         }
 
         function loadDef(passedEntry) {
-            console.log(passedEntry);
-            
+            const definition = document.getElementById("definition");
+            const defHeader = document.getElementById("definition-header");
+            const defDesc = document.getElementById("definition-desc");
+
+            definition.classList.remove("hidden");
         }
 
         
