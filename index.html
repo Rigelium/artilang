@@ -502,10 +502,9 @@ el.addEventListener('touchend', () => {
             templates = filteredArr.join("");
 
             
-            this.replaceAll("{def")
-            1. Used to express an opinion && >> [/Atiu, vele avrau toav! - I think this is really great!] && 2. Think about something && >> [/Auas ati? - What are you thinking about?]
+//            1. Used to express an opinion && >> [/Atiu, vele avrau toav! - I think this is really great!] && 2. Think about something && >> [/Auas ati? - What are you thinking about?]
 
-            const endings = this.replaceAll("]", "</span>");
+            const endings = templates.replaceAll("]", "</span>");
             const bold = endings.replaceAll("[*", "<span style='font-weight: bold;'>");
             const italic = bold.replaceAll("[/", "<span style='font-style: italic;'>");
             const underlined = italic.replaceAll("[_", "<span style='text-decoration: underline;'>");
