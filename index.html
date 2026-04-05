@@ -482,7 +482,28 @@ el.addEventListener('touchend', () => {
                 (/italic)
                 (_underlined)
                 (+large text)
-                && - new line*/
+                && - new line
+                DEF:  - definition
+                EX: - example
+                EXT: - example with tab
+            */
+
+            const inputArr = this.trim().split(/\s+(?=\b[A-Z]+:)/);
+            let filteredArr = [];
+            inputArr.forEach((element) => {
+                if (element.includes("DEF: ")){
+                    filteredArr.concat(`${element.replaceAll("DEF: ", "")}&&`);
+                }
+                if (element.includes("EXT: ")){
+                    filteredArr.concat(`>>[/${element.replaceAll("EXT: ", "")}] &&`);
+                }
+            }
+                            );
+            templates = filteredArr.join("");
+
+            
+            this.replaceAll("{def")
+            1. Used to express an opinion && >> [/Atiu, vele avrau toav! - I think this is really great!] && 2. Think about something && >> [/Auas ati? - What are you thinking about?]
 
             const endings = this.replaceAll("]", "</span>");
             const bold = endings.replaceAll("[*", "<span style='font-weight: bold;'>");
