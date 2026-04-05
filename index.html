@@ -495,6 +495,8 @@ el.addEventListener('touchend', () => {
                     filteredArr.push(`${element.replaceAll("DEF:", "").trim()}&&`);
                 } else if (element.includes("EXT:")){
                     filteredArr.push(` >> [/${element.replaceAll("EXT:", "").trim()}] &&`);
+                } else if (element.includes("EX:")){
+                    filteredArr.push(` [/${element.replaceAll("EXT:", "").trim()}] &&`);
                 } else {
                     filteredArr.push(element);
                 }
