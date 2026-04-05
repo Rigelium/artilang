@@ -251,37 +251,37 @@
         //===============================================================================
 
         const el = document.querySelector('.definition');
-let startY = 0;
-let currentDeltaY = 0;
+        let startY = 0;
+        let currentDeltaY = 0;
+        
+        el.addEventListener('touchstart', (e) => {
+          startY = e.touches[0].clientY;
+          el.classList.add('is-dragging'); // Remove transitions for instant feedback
+        }, {passive: true});
+        
+        el.addEventListener('touchmove', (e) => {
+          const currentY = e.touches[0].clientY;
+          currentDeltaY = currentY - startY;
+        
+          // Only allow swiping DOWN (positive delta)
+          if (currentDeltaY > 0) {
+            el.style.transform = `translateY(${currentDeltaY}px)`;
+          }
+        }, {passive: true});
 
-el.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-  el.classList.add('is-dragging'); // Remove transitions for instant feedback
-}, {passive: true});
-
-el.addEventListener('touchmove', (e) => {
-  const currentY = e.touches[0].clientY;
-  currentDeltaY = currentY - startY;
-
-  // Only allow swiping DOWN (positive delta)
-  if (currentDeltaY > 0) {
-    el.style.transform = `translateY(${currentDeltaY}px)`;
-  }
-}, {passive: true});
-
-el.addEventListener('touchend', () => {
-  el.classList.remove('is-dragging'); // Put transitions back for the "snap"
-  el.style.transform = ''; // Clear the inline style so CSS classes take over
-
-  // Decision Logic: If swiped more than 100px, hide it. Otherwise, snap back.
-  if (currentDeltaY > 100) {
-    el.classList.add('hidden');
-  } else {
-    el.classList.remove('hidden');
-  }
-  
-  currentDeltaY = 0; // Reset for next time
-});
+        el.addEventListener('touchend', () => {
+          el.classList.remove('is-dragging'); // Put transitions back for the "snap"
+          el.style.transform = ''; // Clear the inline style so CSS classes take over
+        
+          // Decision Logic: If swiped more than 100px, hide it. Otherwise, snap back.
+          if (currentDeltaY > 100) {
+            el.classList.add('hidden');
+          } else {
+            el.classList.remove('hidden');
+          }
+          
+          currentDeltaY = 0; // Reset for next time
+        });
 
         //=====================================================================
         
@@ -494,7 +494,7 @@ el.addEventListener('touchend', () => {
                 if (element.includes("DEF:")){
                     filteredArr.push(`${element.replaceAll("DEF:", "").trim()}&&`);
                 } else if (element.includes("EXT:")){
-                    filteredArr.push(` [> [/${element.replaceAll("EXT:", "").trim()}]] &&`);
+                    filteredArr.push(` >> [/${element.replaceAll("EXT:", "").trim()}] &&`);
                 } else if (element.includes("EX:")){
                     filteredArr.push(` [/${element.replaceAll("EXT:", "").trim()}] &&`);
                 } else {
@@ -517,7 +517,7 @@ el.addEventListener('touchend', () => {
             const underlined = italic.replaceAll("[_", "<span style='text-decoration: underline;'>");
             const large = underlined.replaceAll("[+", "<span style='font-size: 2.5rem;'>");
             const newLine = large.replaceAll("&&", `</a><br><a ${styling}>`);
-            const tabbed = newLine.replaceAll("[>", "<span style='margin-left: 2rem;'>");
+            const tabbed = newLine.replaceAll(">>", "&emsp;&emsp;");
             const final = `<a ${styling}> ${tabbed} </a>`;
             return final.adnotate();
         }
