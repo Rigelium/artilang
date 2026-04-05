@@ -18,6 +18,8 @@
             --gray3: #828688;
             --gray4: #48494b;
             --gray5: #242425;
+
+            --naviheight: 150px;
             
 
             --grad-blue: linear-gradient(var(--col5), var(--col4));
@@ -143,17 +145,18 @@
         .navi {
             display: flex;
             background-color: var(--gray5);
-            height: 200px;
+            height: var(--naviheight);
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vh;
+            width: 100vw;
+            
         }
     </style>
 </head>
 <body>
     <div class="navi"></div>
-    <div style="height: 225px; width: 1px;"></div>
+    <div style="height: calc(var(--naviheight); + 25px); width: 1px;"></div>
 
     <div class="definition hidden" id="definition">
         <a id="definition-header"></a>
