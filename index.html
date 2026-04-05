@@ -456,7 +456,7 @@ el.addEventListener('touchend', () => {
             
             
             let defHTML = `
-            <a style="font-size: 2.6rem;">${passedEntry.Word.adnotate()} (${("[" + passedEntry.Category + "]").adnotate()}.)</a> <a style="font-size: 2.6rem; color: var(--col4)">${passedEntry.Translation.adnotate()}</a>
+            <a style="font-size: 2.6rem;">${passedEntry.Word.adnotate()} ${("[(" + passedEntry.Category + ")]").adnotate()}.</a> <a style="font-size: 2.6rem; color: var(--col4)">${passedEntry.Translation.adnotate()}</a>
             <div style="width: 100%; margin: 15px; height: 5px; background-color: var(--gray1)"></div>
             ${tagsHTML}
             <div>${passedEntry.AdditionalInfo.stylise("")}</div>
