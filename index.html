@@ -494,14 +494,14 @@ el.addEventListener('touchend', () => {
                 if (element.includes("DEF:")){
                     filteredArr.push(`${element.replaceAll("DEF:", "").trim()}&&`);
                 } else if (element.includes("EXT:")){
-                    filteredArr.push(`>> [/${element.replaceAll("EXT:", "").trim()}] &&`);
+                    filteredArr.push(` >> [/${element.replaceAll("EXT:", "").trim()}] &&`);
                 } else {
                     filteredArr.push(element);
                 }
                     
             }
                             );
-            templates = filteredArr.join("");
+            const templates = filteredArr.join("");
             console.log(templates);
             console.log(filteredArr);
             console.log(inputArr);
