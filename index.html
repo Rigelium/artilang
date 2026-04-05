@@ -488,7 +488,7 @@ el.addEventListener('touchend', () => {
                 EXT: - example with tab
             */
 
-            const inputArr = this.trim().split(/\s+(?=\b(DEF|EX|EXT):)/);
+            const inputArr = this.trim().split(/\s+(?=\b[A-Z]+:)/);
             let filteredArr = [];
             inputArr.forEach((element) => {
                 if (element.includes("DEF:")){
