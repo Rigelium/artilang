@@ -489,8 +489,9 @@ el.addEventListener('touchend', () => {
             const italic = bold.replaceAll("[/", "<span style='font-style: italic;'>");
             const underlined = italic.replaceAll("[_", "<span style='text-decoration: underline;'>");
             const large = underlined.replaceAll("[+", "<span style='font-size: 2.5rem;'>");
-            const newLine = large.replaceAll("&&", `</a><br><a ${styling}>`)
-            const final = `<a ${styling}> ${newLine} </a>`
+            const newLine = large.replaceAll("&&", `</a><br><a ${styling}>`);
+            const tabbed = newLine.replaceAll(">>", "&emsp;&emsp;");
+            const final = `<a ${styling}> ${tabbed} </a>`;
             return final.adnotate();
         }
     </script>
