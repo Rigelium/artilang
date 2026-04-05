@@ -484,15 +484,14 @@ el.addEventListener('touchend', () => {
                 (+large text)
                 && - new line*/
 
-            const adno = this.adnotate();
-            const endings = adno.replaceAll(")", "</span>");
-            const bold = endings.replaceAll("(*", "<span style='font-weight: bold;'>");
-            const italic = bold.replaceAll("(/", "<span style='font-style: italic;'>");
-            const underlined = italic.replaceAll("(_", "<span style='text-decoration: underline;'>");
-            const large = underlined.replaceAll("(+", "<span style='font-size: 2.5rem;'>");
+            const endings = this.replaceAll("]", "</span>");
+            const bold = endings.replaceAll("[*", "<span style='font-weight: bold;'>");
+            const italic = bold.replaceAll("[/", "<span style='font-style: italic;'>");
+            const underlined = italic.replaceAll("[_", "<span style='text-decoration: underline;'>");
+            const large = underlined.replaceAll("[+", "<span style='font-size: 2.5rem;'>");
             const newLine = large.replaceAll("&&", `</a><br><a ${styling}>`)
             const final = `<a ${styling}> ${newLine} </a>`
-            return final;
+            return final.adnotate();
         }
     </script>
 </body>
