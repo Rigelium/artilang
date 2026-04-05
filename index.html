@@ -488,15 +488,17 @@ el.addEventListener('touchend', () => {
                 EXT: - example with tab
             */
 
-            const inputArr = this.trim().split(/\s+(?=\b[A-Z]+:)/);
+            const inputArr = this.trim().split(/\s+(?=\b(DEF|EX|EXT):)/);
             let filteredArr = [];
             inputArr.forEach((element) => {
-                if (element.includes("DEF: ")){
-                    filteredArr.concat(`${element.replaceAll("DEF: ", "")}&&`);
+                if (element.includes("DEF:")){
+                    filteredArr.push(`${element.replaceAll("DEF:", "").trim()}&&`);
+                } else if (element.includes("EXT:")){
+                    filteredArr.push(`>>[/${element.replaceAll("EXT:", "").trim()}] &&`);
+                } else {
+                    filteredArr.push(element);
                 }
-                if (element.includes("EXT: ")){
-                    filteredArr.concat(`>>[/${element.replaceAll("EXT: ", "")}] &&`);
-                }
+                    
             }
                             );
             templates = filteredArr.join("");
