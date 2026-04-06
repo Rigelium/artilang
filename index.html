@@ -215,6 +215,8 @@
         const WPC = 10;
         const WPP = WPC*columns;
 
+        let dbSettings;
+
         const cboxInputLang = document.getElementById("cbox-input-lang");
         const cboxOutputLang = document.getElementById("cbox-output-lang");
         const cboxOtherLang = document.getElementById("cbox-other-lang");
@@ -333,9 +335,12 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        words = results.data.sort((a, b) => {
+                        
+                        words = results.data.Vocab.sort((a, b) => {
                             return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
                         });
+
+                        dbSettings = results.data.LangInfo;
                         
                         displayPage();
                         
