@@ -28,13 +28,21 @@
 
                 
         }
+        @font-face {
+          font-family: 'SS3Fallback';
+          src: url('SourceSans3-VariableFont_wght.ttf') format('truetype');
+          
+          /* Optional: Define specific weights or styles */
+          font-weight: normal;
+          font-style: normal;
+        }
         body {
-            font-family: "Source Sans 3", arial;
+            font-family: "Source Sans 3", "SS3Fallback", arial;
             font-size: 2em;
+            line-height: 1.2em;
         }
         a {
-            font-size: 2rem;
-            
+            font-size: 2rem;            
         }
         .adnot {
             font-style: italic;
@@ -166,8 +174,8 @@
             <div style="width: 80px; height: 6px; background-color: white; border-radius: 5px;"></div>
         </div>
     </div>
-    <div style="height: 145px; width: 1px;"></div>
-    <a style="font-size: 2em; color: var(--gray4)" id="title-text">The Etese dictionary</a>
+    <div style="height: 170px;"></div>
+    <a style="font-size: 2em; color: var(--gray4); margin-bottom: 10px;" id="title-text">The Etese dictionary</a>
 
     <div class="definition hidden" id="definition">
         <a id="definition-header"></a>
