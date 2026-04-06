@@ -224,6 +224,7 @@
     
     <div id="dictionary-container" style="margin-top: 15px;">Loading words...</div>
 
+    <a id="links-text-container" style="display: none; font-size: 2em; color: var(--gray4);">Other useful links</a>
     <div id="links-container">
         <a src="https://iwilldoitlater.com">WIP links</a>
     </div>
@@ -374,14 +375,9 @@
             if (dbSettings[1].LanguageName) document.getElementById("il-text").textContent = dbSettings[1].LanguageName;
             if (dbSettings[1].TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings[1].TranslationLanguage;
 
-            const linksContainer = document.getElementById("links-container");
+            const linksTextContainer = document.getElementById("links-text-container");
             if (dbSettings[1].UsefulLinks) {
-                const linksHeader = document.createElement("a");
-                linksHeader.style.cssText = "font-size: 2em; color: var(--gray4);";
-                linksHeader.textContent = "Other useful links: ";
-                linksContainer.innerHTML = "";
-                linksContainer.appendChild(linksHeader);
-                
+                linksTextContainer.style.display = "inherit";
             }
             dbSettings[1].UsefulLinks.split("&&").forEach((element) => {
                 const websiteName = element.split("-")[0].trim();
