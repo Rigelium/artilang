@@ -342,11 +342,16 @@
                     complete: function(results) {
                         dbSettings = results.data;
                         console.log(results.data);
+                        updateText();
                     }
                 });
             } catch (e) {
                 console.error("Couldn't load the settings.", e);
             }
+        }
+        function updateText() {
+            if (dbSettings.LanguageName) document.getElementById("il-text").textContent = db.LanguageName;
+            if (dbSettings.TranslationLanguage) document.getElementById("ol-text").textContent = db.TranslationLanguage;
         }
         
         async function loadDictionary() {
