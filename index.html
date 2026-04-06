@@ -338,6 +338,8 @@
                         dbSettings = results.data;
                     }
                 });
+            } catch (e) {
+                console.error("Couldn't load the settings.", e);
             }
         }
         
