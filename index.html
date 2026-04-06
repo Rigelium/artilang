@@ -374,16 +374,24 @@
             if (dbSettings[1].LanguageName) document.getElementById("il-text").textContent = dbSettings[1].LanguageName;
             if (dbSettings[1].TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings[1].TranslationLanguage;
 
+            const linksContainer = document.getElementById("links-container");
+            if (dbSettings[1].UsefulLinks) {
+                const linksHeader = document.createElement("a");
+                linksHeader.style.cssText = "font-size: 2em; color: var(--gray4);";
+                linksHeader.textContent = "Other useful links: ";
+                linksContainer.innerHTML = "";
+                linksContainer.appendChilld(newLink);
+                
+            }
             dbSettings[1].UsefulLinks.split("&&").forEach((element) => {
                 const websiteName = element.split("-")[0].trim();
                 const websiteUrl = element.split("-")[1].trim();
 
-                const linksContainer = document.getElementById("links-container");
                 const newLink = document.createElement("div");
                 newLink.innerHTML = `
                 <a href="${websiteUrl}">${websiteName}</a>
                 `;
-                linksContainer.appendChild(newLink)
+                linksContainer.appendChild(newLink);
             });
         }
         loadSettings();
