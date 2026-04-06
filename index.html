@@ -215,7 +215,7 @@
         const WPC = 10;
         const WPP = WPC*columns;
 
-        let dbSettings;
+        let dbSettings = [];
 
         const cboxInputLang = document.getElementById("cbox-input-lang");
         const cboxOutputLang = document.getElementById("cbox-output-lang");
@@ -336,6 +336,7 @@
                     header: true,
                     complete: function(results) {
                         dbSettings = results.data;
+                        console.log(results.data);
                     }
                 });
             } catch (e) {
