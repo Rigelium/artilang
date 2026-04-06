@@ -379,6 +379,8 @@
             if (dbSettings[1].UsefulLinks) {
                 linksTextContainer.style.display = "inherit";
             }
+            
+            const linksContainer = document.getElementById("links-container");
             dbSettings[1].UsefulLinks.split("&&").forEach((element) => {
                 const websiteName = element.split("-")[0].trim();
                 const websiteUrl = element.split("-")[1].trim();
