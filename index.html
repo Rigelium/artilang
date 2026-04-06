@@ -189,11 +189,11 @@
           <h3 style="margin-top: 10px; margin-bottom: 10px;">Search by following languages</h3>
           <label class="checkbox">
               <input type="checkbox" style="transform: scale(2);" id="cbox-input-lang">
-              <a>Input language</a>
+              <a id="il-text">Input language</a>
           </label>
           <label class="checkbox">
               <input type="checkbox" style="transform: scale(2);" id="cbox-output-lang">
-              <a>Output language</a>
+              <a id="ol-text">Output language</a>
           </label>
           <label class="checkbox">
               <input type="checkbox" style="transform: scale(2);" id="cbox-other-lang">
@@ -319,13 +319,18 @@
         
         const urlParams = new URLSearchParams(window.location.search);
         const sheetId = urlParams.get('id');
+        const GID = urlParams.get('gid');
 
         const defaultId = '2PACX-1vTfKG2OdSxQPoM5KZksk4JTlie4kaMiEvBDE7Tm8BvZsSk88mSQx748HK3W8-zvKXu3bJbFjST8_Lho';
         const finalId = sheetId || defaultId;
         
         const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${finalId}/pub?gid=0&single=true&output=csv`;
+        
         const secondSheetGID = "298988717";
-        const SECOND_SHEET_URL = SHEET_URL.replace("?gid=0", `?gid=${secondSheetGID}`);
+        const finalGID = GID || secondSheetGID;
+        
+        
+        const SECOND_SHEET_URL = SHEET_URL.replace("?gid=0", `?gid=${finalGID}`);
 
         async function loadSettings() {
             try {
