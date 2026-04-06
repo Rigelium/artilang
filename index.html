@@ -353,6 +353,7 @@
             if (dbSettings.LanguageName) document.getElementById("il-text").textContent = db.LanguageName;
             if (dbSettings.TranslationLanguage) document.getElementById("ol-text").textContent = db.TranslationLanguage;
         }
+        loadSettings();
         
         async function loadDictionary() {
             try {
