@@ -327,6 +327,19 @@
         const secondSheetGID = "298988717";
         const SECOND_SHEET_URL = SHEET_URL.replace("?gid=0", `?gid=${secondSheetGID}`);
 
+        async function loadSettings() {
+            try {
+                const response = await fetch(SECOND_SHEET_URL);
+                const csvData = await response.text();
+
+                Papa.parse(csvData, {
+                    header: true,
+                    complete: function(results) {
+                        dbSettings = results.data;
+                    }
+                });
+            }
+        }
         
         async function loadDictionary() {
             try {
