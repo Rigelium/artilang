@@ -371,8 +371,20 @@
             }
         }
         function updateText() {
-            if (dbSettings[0].LanguageName) document.getElementById("il-text").textContent = dbSettings[0].LanguageName;
-            if (dbSettings[0].TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings[0].TranslationLanguage;
+            if (dbSettings[1].LanguageName) document.getElementById("il-text").textContent = dbSettings[1].LanguageName;
+            if (dbSettings[1].TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings[1].TranslationLanguage;
+
+            dbSettings[1].UsefulLinks.split("&&").forEach((element) => {
+                const websiteName = element.split("-")[0].trim();
+                const websiteUrl = element.split("-")[1].trim();
+
+                const linksContainer = document.getElementById("links-container");
+                const newLink = document.createElement("div");
+                newLink.innerHTML = `
+                <a href="${websiteUrl}">${websiteName}</a>
+                `;
+                linksContainer.appendChild(newLink)
+            });
         }
         loadSettings();
         
