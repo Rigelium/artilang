@@ -350,8 +350,8 @@
             }
         }
         function updateText() {
-            if (dbSettings.LanguageName) document.getElementById("il-text").textContent = dbSettings.LanguageName;
-            if (dbSettings.TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings.TranslationLanguage;
+            if (dbSettings[0].LanguageName) document.getElementById("il-text").textContent = dbSettings[0].LanguageName;
+            if (dbSettings[0].TranslationLanguage) document.getElementById("ol-text").textContent = dbSettings[0].TranslationLanguage;
         }
         loadSettings();
         
