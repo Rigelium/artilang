@@ -384,9 +384,10 @@
                 const websiteName = element.split("-")[0].trim();
                 const websiteUrl = element.split("-")[1].trim();
 
-                const newLink = document.createElement("div");
+                const newLink = document.createElement("a");
+                newLink.href = websiteUrl;
                 newLink.innerHTML = `
-                <a href="${websiteUrl}">${websiteName}</a>
+                <div class="word-tags"><a>${websiteName}</a></div>
                 `;
                 linksContainer.appendChild(newLink);
             });
