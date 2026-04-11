@@ -165,9 +165,26 @@
             justify-content: space-between;
             z-index: 100;
         }
+        .menu {
+            background-color: black;
+            display: flex;
+            transition: transform 2s ease-in-out;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 105vw;
+            align-items: center;
+        }
+        .menu.hidden {
+            transform: translateX(120vh);
+        }
     </style>
 </head>
 <body>
+
+    <div class="menu hidden"></div>
+    
     <div class="navi">
         <img src="images/artilang.png" style="height: 80%">
         <div onclick="" style="display: flex; justify-content: flex-end; flex-direction: column; justify-content: space-between; height: 40%; margin-right: 80px;">      
