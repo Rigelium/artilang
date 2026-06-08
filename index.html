@@ -558,7 +558,7 @@
                
                 const tagsFound = tags.length == 0 || tags.some(t => word.Tags.includes(t));
                 const POScheck = POS.length == 0 || POS.some(t => word.Category.includes(t));
-                const defFiltpass = defFilt.checked = false || word.AdditionalInfo.length > 0;
+                const defFiltpass = defFilt.checked == false || word.AdditionalInfo.length > 0;
                 
                 return matchingText && tagsFound && POScheck && defFiltpass;
             });
