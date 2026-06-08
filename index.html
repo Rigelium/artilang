@@ -255,6 +255,7 @@
     <script>
         
         let words = []; // initialising as global array
+        let wordsUnfiltered = [];
         let currentPage = 1;
         const columns = 3;
         const WPC = 10;
@@ -429,13 +430,8 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        if (!order.checked) {
-                            words = results.data.sort((a, b) => {
-                                return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
-                            });
-                        } else {
-                            words = results.toReversed();
-                        }
+                        wordsUnfiltered = results.data;
+
                         displayPage();
                         
                         const input = document.getElementById("input-query");
@@ -457,6 +453,14 @@
         }
 
         function displayPage() {
+            if (!order.checked) {
+                words = wordsUnfiltered.sort((a, b) => {
+                    return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
+                    });
+                } else {
+                    words = wordsUnfiltered.toReversed();
+                }
+            
             const container = document.getElementById('dictionary-container');
             container.innerHTML = ''; // Clear the "Loading" text
             container.classList.add("scroll-container");
