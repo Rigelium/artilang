@@ -269,7 +269,7 @@
         cboxInputLang.checked = true;
         cboxOutputLang.checked = true;
         cboxOtherLang.checked = true;
-        order = false;
+        order.checked = false;
 
         //=============================================================
        
@@ -429,7 +429,7 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        if (!order) {
+                        if (!order.checked) {
                             words = results.data.sort((a, b) => {
                                 return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
                             });
