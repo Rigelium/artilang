@@ -231,6 +231,12 @@
               <input type="checkbox" style="transform: scale(2);" id="cbox-other-lang">
               <a>Other translations</a>
           </label>
+        
+          <h3 style="margin-top: 10px; margin-bottom: 10px;">Order</h3>
+          <label class="checkbox">
+              <input type="checkbox" style="transform: scale(2);" id="order">
+              <a>Show newest entries</a>
+          </label>
           
       </div>
     </div>
@@ -259,9 +265,11 @@
         const cboxInputLang = document.getElementById("cbox-input-lang");
         const cboxOutputLang = document.getElementById("cbox-output-lang");
         const cboxOtherLang = document.getElementById("cbox-other-lang");
+        const order = document.getElementById("order");
         cboxInputLang.checked = true;
         cboxOutputLang.checked = true;
         cboxOtherLang.checked = true;
+        order = false;
 
         //=============================================================
        
@@ -421,11 +429,13 @@
                 Papa.parse(csvData, {
                     header: true, // Uses the first row as keys (e.g., "Word", "Definition")
                     complete: function(results) {
-                        
-                        words = results.data.sort((a, b) => {
-                            return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
-                        });
-                        
+                        if (!order) {
+                            words = results.data.sort((a, b) => {
+                                return a.Word.replaceAll("[", "").localeCompare(b.Word.replaceAll("[", ""), undefined, { sensitivity: 'base' });
+                            });
+                        } else {
+                            words = results.toReversed();
+                        }
                         displayPage();
                         
                         const input = document.getElementById("input-query");
