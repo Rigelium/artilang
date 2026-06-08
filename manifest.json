@@ -1,7 +1,7 @@
 {
-  "name": "My Custom App Name",
-  "short_name": "My App",
-  "description": "An app that connects to Google Sheets",
+  "name": "Artilang",
+  "short_name": "Artilang",
+  "description": "The conlang dictionary",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
